@@ -105,7 +105,7 @@ export default function MainAppBar() {
                       <BusinessAreaList />
                     </ProtectedRouteBusinessAreaList>
 
-                    <ProtectedRouteReportPage exact path={`/${SEARCH_DOCUMENTS}/:donorId?`}>
+                    <ProtectedRouteReportPage exact path={`/${SEARCH_DOCUMENTS}/:baId?`}>
                       <SearchPage />
                     </ProtectedRouteReportPage>
 

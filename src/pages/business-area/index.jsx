@@ -62,9 +62,7 @@ export default function BusinessAreaList() {
   const loading = useSelector(selectLoading);
 
   const { page, rowsPerPage, resetPagination, handleChangePage, handleChangeRowsPerPage } = usePagination();
-
   const businessAreas = useSelector(selectBusinessAreas);
-  //@dci const pageName = useSelector(state => state.ui.menuBarPage);
 
   useEffect(() => {
     if (businessAreas.length) {

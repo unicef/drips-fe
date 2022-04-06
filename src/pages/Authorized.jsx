@@ -28,10 +28,10 @@ export function ProtectedRouteReportPage({ children, ...rest }) {
     <Route
       {...rest}
       render={({ match }) => {
-        const { donorId } = match.params;
+        const { baId } = match.params;
         const { path } = match;
         const docPath = path.includes(DOCUMENTS_PATH);
-        const unassignedDocAttempt = !docPath || Boolean(!canViewDocuments) || !donorId;
+        const unassignedDocAttempt = !docPath || Boolean(!canViewDocuments) || !baId;
         return unassignedDocAttempt ? <Redirect to="/not-found" /> : children;
       }}
     />

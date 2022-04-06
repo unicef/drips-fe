@@ -17,8 +17,7 @@ import {
   fetchSearchReports,
 } from 'api/search-index';
 import {
-  setLoading,
-  setCurrentlyLoadedDonor
+  setLoading
 } from 'slices/ui';
 import {
   onReceiveSearchReports
@@ -49,7 +48,6 @@ function* getSearchReports(params) {
   const currentlyBACode = yield select(selectBusinessAreaCode);
 
   if (!currentlyBACode || currentlyBACode != params.businessArea) {
-    yield put(setCurrentlyLoadedDonor(params.donor_code))
     searchReports = yield call(getInitialSearchReports, params);
     return searchReports;
   }

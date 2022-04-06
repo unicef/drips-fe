@@ -13,7 +13,6 @@ export const uiSlice = createSlice({
     page: '',
     businessArea: '',
     menuBarPage: '',
-    currentlyLoadedDonor: '',
     assignedRole: false
   },
   reducers: {
@@ -53,11 +52,6 @@ export const uiSlice = createSlice({
     }) {
       state.menuBarPage = payload;
     },
-    setCurrentlyLoadedDonor(state, {
-      payload
-    }) {
-      state.currentlyLoadedDonor = payload;
-    },
     setAssignedRole(state, {
       payload
     }) {
@@ -74,6 +68,5 @@ export const {
   onRouteChange,
   menuItemSelected,
   resetLoading,
-  setCurrentlyLoadedDonor,
   setAssignedRole
 } = uiSlice.actions;
