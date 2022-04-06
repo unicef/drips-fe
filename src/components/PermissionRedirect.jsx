@@ -10,20 +10,20 @@ export const usePermissions = () => {
   const isDonorAdmin = userGroup === DONOR_ADMIN_ROLE;
   const isDonorUser = userGroup === DONOR_USER_ROLE;
   const isSuperUser = useSelector(selectIsSuperUser);
-  const canViewDonors = isUnicefUser || isSuperUser;
+  const canViewDocument = isUnicefUser || isSuperUser;
   return {
     isUnicefUser,
     isDonorAdmin,
     isSuperUser,
     isDonorUser,
-    canViewDonors
+    canViewDocuments: canViewDocument
   };
 };
 
 export default function PermissionRedirect() {
-  const { canViewDonors } = usePermissions();
+  const { canViewDocuments } = usePermissions();
 
-  if (canViewDonors) {
+  if (canViewDocuments) {
     return <Redirect to="/business_areas" />;
   } else {
     return <Redirect to="/landing" />;

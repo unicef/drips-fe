@@ -22,7 +22,7 @@ export function ProtectedRouteBusinessAreaList({ children, ...rest }) {
 }
 
 export function ProtectedRouteReportPage({ children, ...rest }) {
-  const { canViewDonors } = usePermissions();
+  const { canViewDocuments } = usePermissions();
 
   return (
     <Route
@@ -31,7 +31,7 @@ export function ProtectedRouteReportPage({ children, ...rest }) {
         const { donorId } = match.params;
         const { path } = match;
         const docPath = path.includes(DOCUMENTS_PATH);
-        const unassignedDocAttempt = !docPath || Boolean(!canViewDonors) || !donorId;
+        const unassignedDocAttempt = !docPath || Boolean(!canViewDocuments) || !donorId;
         return unassignedDocAttempt ? <Redirect to="/not-found" /> : children;
       }}
     />

@@ -43,7 +43,7 @@ export const useTableStyles = makeStyles(theme => ({
     overflowX: 'auto'
   },
   cell: {
-    paddingRight: 14,
+    padding: '8px',
     maxWidth: 0,
     overflow: 'hidden',
     textOverflow: 'ellipsis'

@@ -13,14 +13,14 @@ export default function ConnectedRouterWatcher({ children }) {
   const currentPageName = useSelector(selectPageName);
   const currentBusinessArea = useSelector(selectBusinessAreaCode);
   const businessAreas = useSelector(selectBusinessAreaCode);
-  const { canViewDonors } = usePermissions();
+  const { canViewDocuments } = usePermissions();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (canViewDonors && !businessAreas.length) {
+    if (canViewDocuments && !businessAreas.length) {
       dispatch(initBusinessAreaList());
     }
-  }, [canViewDonors]);
+  }, [canViewDocuments]);
 
   useEffect(() => {
     // only dispatch if actual route changed, children change will trigger re-render of this component
