@@ -45,20 +45,18 @@ export const MODIFIED_AFTER_FIELD = 'modified__gte';
 
 export const IP_TYPE_FIELD = 'ip_type';
 export const CSO_TYPE_FIELD = 'cso_type';
-export const OFFICE_FIELD = 'office';
-export const RISK_RATING_FIELD = 'risk_rating';
-export const BAP_DOCUMENT_TYPE_FIELD = 'bap_document_type';
-export const DOCUMENT_TYPE_FIELD = 'document_type';
-export const FACE_TYPE_FIELD = 'face_type';
-export const UPLOADING_APP_FIELD = 'uploading_app';
-export const IP_NO_FIELD = 'ip_no';
-export const BAP_DOCUMENT_NO_FIELD = 'bap_document_no';
-export const FACE_NO_FIELD = 'face_no';
-export const PROGRAMM_OFFICER_FIELD = 'programm_officer';
-export const FACE_DATE_FIELD = 'face_date';
-export const HEAD_OFFICE_FIELD = 'head_office';
-
-
+export const OFFICE_FIELD = 'responsible_office';
+export const RISK_RATING_FIELD = 'partner_risk_rating'; // @dci ??? seems it's not working on fitlering
+export const BAP_DOCUMENT_TYPE_FIELD = 'b_a_p_document_type';
+export const DOCUMENT_TYPE_FIELD = 'attachment_type';
+export const FACE_TYPE_FIELD = 'face_form_type';
+export const UPLOADING_APP_FIELD = 'documentuploaded_app';
+export const IP_NO_FIELD = 'implementing_partner_code';
+export const BAP_DOCUMENT_NO_FIELD = 'b_a_p_document_no';
+export const FACE_NO_FIELD = 'face_form_no';
+export const PROGRAMM_OFFICER_FIELD = 'responsible_person';
+export const FACE_DATE_FIELD = 'f_a_c_e_form_date';
+export const HEAD_OFFICE_FIELD = 'head_office'; // @dci ???
 
 
 // PROPERTIES TO BE USED FOR QUERY

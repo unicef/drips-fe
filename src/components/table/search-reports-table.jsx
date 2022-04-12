@@ -100,9 +100,9 @@ export default function ReportsTable() {
                         </TableCell>
                       </Tooltip>
 
-                      <Tooltip title={row.ip_type ? row.ip_type : ''}>
+                      <Tooltip title={row.attachment_type ? row.attachment_type : ''}>
                         <TableCell className={classes.cell} align="left">
-                          {row.ip_type}
+                          {row.attachment_type}
                         </TableCell>
                       </Tooltip>
 
