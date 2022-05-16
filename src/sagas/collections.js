@@ -8,7 +8,6 @@ import {
 
 import {
   getBusinessArea,
-  getStaticAssets,
   getMetadata,
   getConfig
 } from 'api';
@@ -30,15 +29,10 @@ import {
   setLoading
 } from 'slices/ui';
 import {
-  onReceiveStaticAssets,
-  staticAssetsInitialState
-} from 'slices/static';
-import {
   onReceiveMetadata,
   metadataInitialState
 } from 'slices/metadata';
 import {
-  selectStaticAssets,
   selectMetadata,
   selectConfig
 } from 'selectors/collections';
@@ -56,22 +50,6 @@ function* handleFetchBusinessArea() {
     yield put(setError(err));
   } finally {
     yield put(setLoading(false));
-  }
-}
-
-
-function* handleFetchStatic() {
-  const staticAssets = yield select(selectStaticAssets);
-
-  if (!equals(staticAssets, staticAssetsInitialState)) {
-    return;
-  }
-
-  try {
-    const staticDropdowns = yield call(getStaticAssets);
-    yield put(onReceiveStaticAssets(staticDropdowns));
-  } catch (err) {
-    yield put(setError(err));
   }
 }
 
@@ -107,7 +85,7 @@ function* handleFetchConfig() {
 
 export function* businessSaga() {
   yield takeLatest(initBusinessAreaList.type, handleFetchBusinessArea);
-  yield all([call(handleFetchStatic), call(handleFetchMetadata), call(handleFetchConfig)])
+  yield all([call(handleFetchMetadata), call(handleFetchConfig)])
 }
 
 export default function*() {
