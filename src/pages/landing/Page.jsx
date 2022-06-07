@@ -69,7 +69,7 @@ export default function LandingPage() {
 
   function signIn() {
     const url = window.location.origin;
-    window.location.href = `${url}/sociallogin/unicef-azuread-b2c-oauth2/`;
+    window.location.href = `${url}/drips/social/login/unicef-azuread-tenant-oauth2/`;
   }
 
   return (
