@@ -29,7 +29,10 @@ import {
   onFetchSearchReports
 } from 'actions';
 import {
-  SEARCH_DOCUMENTS
+  waitFor
+} from './helpers';
+import {
+  SEARCH_DOCUMENTS, SOURCE_ID
 } from '../lib/constants'
 
 function* getInitialSearchReports(params) {
@@ -59,7 +62,8 @@ function* getSearchReports(params) {
 
 function* getSearchCallerFunc(payload) {
   const reportPageName = yield select(selectMenuBarPage);
-  const businessArea = yield select(selectBusinessAreaCode);
+  yield call(waitFor, selectBusinessAreaCode);
+  const businessArea = yield select(selectBusinessAreaCode)
   let result = {
     params: {
       ...removeEmpties(payload)
@@ -70,6 +74,7 @@ function* getSearchCallerFunc(payload) {
   switch (reportPageName) {
     case SEARCH_DOCUMENTS: {
       result.params.business_area = businessArea;
+      result.params.source_id = SOURCE_ID;
       break
     }
   }

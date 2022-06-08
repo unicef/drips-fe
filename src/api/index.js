@@ -4,7 +4,6 @@ import {
 } from './helpers';
 import Qs from 'qs';
 import {
-  REACT_APP_USER_STATIC_ENDPOINT,
   REACT_APP_METADATA_ENDPOINT,
   REACT_APP_PROFILE_ENDPOINT,
   REACT_APP_BUSINESS_AREA_ENDPOINT,
@@ -53,10 +52,6 @@ export async function get(uri, params = {}, options = getBaseOptions()) {
 
 export function getBusinessArea() {
   return get(REACT_APP_BUSINESS_AREA_ENDPOINT);
-}
-
-export function getStaticAssets() {
-  return get(REACT_APP_USER_STATIC_ENDPOINT);
 }
 
 export function getMetadata() {

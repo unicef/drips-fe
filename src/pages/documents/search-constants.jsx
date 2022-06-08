@@ -45,16 +45,16 @@ export const MODIFIED_AFTER_FIELD = 'modified__gte';
 
 export const IP_TYPE_FIELD = 'ip_type';
 export const CSO_TYPE_FIELD = 'cso_type';
-export const OFFICE_FIELD = 'responsible_office';
+export const OFFICE_FIELD = 'responsible_office__contains';
 export const RISK_RATING_FIELD = 'partner_risk_rating'; // @dci ??? seems it's not working on fitlering
 export const BAP_DOCUMENT_TYPE_FIELD = 'b_a_p_document_type';
 export const DOCUMENT_TYPE_FIELD = 'attachment_type';
 export const FACE_TYPE_FIELD = 'face_form_type';
 export const UPLOADING_APP_FIELD = 'documentuploaded_app';
-export const IP_NO_FIELD = 'implementing_partner_code';
-export const BAP_DOCUMENT_NO_FIELD = 'b_a_p_document_no';
-export const FACE_NO_FIELD = 'face_form_no';
-export const PROGRAMM_OFFICER_FIELD = 'responsible_person';
+export const IP_NO_FIELD = 'implementing_partner_code__contains';
+export const BAP_DOCUMENT_NO_FIELD = 'b_a_p_document_no__contains';
+export const FACE_NO_FIELD = 'face_form_no__contains';
+export const PROGRAMM_OFFICER_FIELD = 'responsible_person__contains';
 export const FACE_DATE_FIELD = 'f_a_c_e_form_date';
 export const HEAD_OFFICE_FIELD = 'head_office'; // @dci ???
 
