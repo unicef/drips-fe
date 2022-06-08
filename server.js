@@ -11,4 +11,4 @@ app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(port, () => console.log(`Etools manage listening on port ${port}!`));
+app.listen(port, () => console.log(`Drips manage listening on port ${port}!`));
