@@ -41,6 +41,7 @@ export const FORM_CONFIG = {
 export const DOCUMENTS = 'documents';
 export const SEARCH_DOCUMENTS = 'documents';
 export const THEMATIC_GRANTS = 'thematic-grants';
+export const SOURCE_ID = '51b10aef-9d0e-452b-8588-6a899a25c251';
 
 export const DOCUMENTS_PATH = `/${DOCUMENTS}`;
 export const SEARCH_DOCUMENTS_PATH = `/${SEARCH_DOCUMENTS}`;

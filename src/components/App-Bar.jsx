@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { createStyles } from '@material-ui/styles';
+import { useHistory } from 'react-router';
 import { makeStyles, AppBar, Toolbar, Box, Typography, IconButton } from '@material-ui/core';
 import horizontalLogo from '../assets/images/UNICEF_White_Horizontal.png';
 import ezhactSmallLogo from '../assets/images/ezhact_logo_small.png';
@@ -60,22 +61,28 @@ const useStyles = makeStyles(theme =>
   })
 );
 
+export const useNav = () => {
+  const history = useHistory();
+
+  const handleNav = page => () => {
+      history.push(`/${page}`);
+  };
+
+  return { handleNav };
+};
+
 export default function AppToolbar() {
   const classes = useStyles();
   const userName = useSelector(selectUserName);
   const pageName = useSelector(selectPageName);
-
+  const { handleNav } = useNav();
   function logout() {
     window.location.href = `/drips/social/unicef-logout/`;
   }
 
-  function goToHome() {
-    window.location.href = `/business_areas`;
-  }
-
   function getHomeButton() {
     if (pageName === DOCUMENTS) {
-      return  <IconButton aria-label="logout" className={clsx(classes.button, classes.home)} onClick={goToHome}>
+      return  <IconButton aria-label="logout" className={clsx(classes.button, classes.home)} onClick={handleNav('business_areas')}>
           <HomeIcon />
         </IconButton>
     }
