@@ -96,7 +96,7 @@ export default function LandingPage() {
                   variant="container"
                   onClick={signIn}
                 >
-                  <Link href="/sociallogin/unicef-azuread-b2c-oauth2/">Sign In</Link>
+                  <Link href="/drips/social/login/unicef-azuread-tenant-oauth2/">Sign In</Link>
                 </Button>
               </Box>
             </Grid>
