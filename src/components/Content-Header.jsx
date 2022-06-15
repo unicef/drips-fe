@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { makeStyles, createStyles, Grid, Typography } from '@material-ui/core';
 import { getSubheadingFromParams } from 'lib/params';
+import { useSelector } from 'react-redux';
+import { selectBusinessAreaName } from 'selectors/ui-flags';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -28,7 +30,9 @@ const useStyles = makeStyles(theme =>
 
 function ContentHeader({ children, location }) {
   const classes = useStyles();
+  const businessAreaName = useSelector(selectBusinessAreaName);
   const title = getSubheadingFromParams(location.pathname);
+
   return (
     <Grid
       alignItems="center"
@@ -37,9 +41,9 @@ function ContentHeader({ children, location }) {
       container
     >
       <Grid>
-        <Typography className={classes.title} variant="h5">
-          {title}
-        </Typography>
+        { title && <Typography className={classes.title} variant="h5">
+          {title} for {businessAreaName}
+        </Typography> }
       </Grid>
       {children}
     </Grid>
