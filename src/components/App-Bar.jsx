@@ -99,15 +99,15 @@ export default function AppToolbar() {
         <Box width="100%">
           <Box width="100%" display="flex" justifyContent="space-between">
             <img src={horizontalLogo} className={classes.headerLogo} />
+            <IconButton aria-label="logout" className={classes.button} onClick={logout}>
+              <ExitToAppIcon />
+            </IconButton>
           </Box>
           <Box width="100%" display="flex" justifyContent="space-between">
             <Typography className={clsx(classes.appTitle, classes.banner)}>Document Repository of Implementing Partners Portal</Typography>
             <Typography className={classes.banner}>{userName}</Typography>
           </Box>
         </Box>
-        <IconButton aria-label="logout" className={classes.button} onClick={logout}>
-          <ExitToAppIcon />
-        </IconButton>
       </Toolbar>
       <ErrorsSnackbar />
       <SuccessSnackbar />

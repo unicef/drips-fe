@@ -7,7 +7,6 @@ import {
   REACT_APP_METADATA_ENDPOINT,
   REACT_APP_PROFILE_ENDPOINT,
   REACT_APP_BUSINESS_AREA_ENDPOINT,
-  REACT_APP_REPORTS_ENDPOINT,
   REACT_APP_CONFIG_ENDPOINT
 } from './endpoints';
 
@@ -30,13 +29,6 @@ const getBaseOptions = () => ({
     });
   }
 });
-
-const setTenantName = () => {
-  if (window.location.href.includes('tst') || window.location.href.includes('localhost')) {
-    return 'unitst';
-  }
-  return 'unicef';
-}
 
 export async function get(uri, params = {}, options = getBaseOptions()) {
   const opt = {
@@ -64,13 +56,4 @@ export function getConfig() {
 
 export function getUserProfile() {
   return get(REACT_APP_PROFILE_ENDPOINT);
-}
-
-export async function getReports(params, year = currentDate()) {
-  params = {
-    ...params,
-    retracted__not: 'yes'
-  }
-  const computedUrl = REACT_APP_REPORTS_ENDPOINT.replace('<envvar>', setTenantName()).replace('<folder>', `${year}`);
-  return get(computedUrl, params);
 }
