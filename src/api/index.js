@@ -10,11 +10,6 @@ import {
   REACT_APP_CONFIG_ENDPOINT
 } from './endpoints';
 
-const currentDate = () => {
-  let date = new Date();
-  return date.getFullYear();
-};
-
 const backendPath = '/drips/api';
 
 const getBaseOptions = () => ({

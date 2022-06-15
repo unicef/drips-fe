@@ -55,8 +55,11 @@ const useStyles = makeStyles(theme =>
     button: {
       color: 'white',
     },
-    home: {
-      marginRight: '26px',
+    logo: {
+      width: '55px',
+      margin: '0 10px',
+      display: 'flex',
+      justifyContent: 'space-between'
     }
   })
 );
@@ -82,7 +85,7 @@ export default function AppToolbar() {
 
   function getHomeButton() {
     if (pageName === DOCUMENTS) {
-      return  <IconButton aria-label="logout" className={clsx(classes.button, classes.home)} onClick={handleNav('business_areas')}>
+      return  <IconButton aria-label="logout" className={clsx(classes.button)} onClick={handleNav('business_areas')}>
           <HomeIcon />
         </IconButton>
     }
@@ -93,7 +96,7 @@ export default function AppToolbar() {
     <AppBar className={classes.appBar} position="fixed">
       <Toolbar className={classes.toolbar}>
         {getHomeButton()}
-        <Box width="110px" display="flex" justifyContent="space-between">
+        <Box className={classes.logo}>
             <img src={ezhactSmallLogo} className={classes.ezhactLogo} />
         </Box>
         <Box width="100%">
