@@ -28,6 +28,11 @@ export const selectBusinessAreaCode = createSelector(
   ui => ui.businessArea
 );
 
+export const selectBusinessAreaName = createSelector(
+  selectUi,
+  ui => ui.businessAreaName
+);
+
 export const selectMenuBarPage = createSelector(
   [selectUi],
   ui => ui.menuBarPage

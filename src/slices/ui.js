@@ -12,6 +12,7 @@ export const uiSlice = createSlice({
     loading: false,
     page: '',
     businessArea: '',
+    businessAreaName: '',
     menuBarPage: '',
     assignedRole: false
   },
@@ -47,6 +48,11 @@ export const uiSlice = createSlice({
         state.menuBarPage = payload.page;
       }
     },
+    setBusinessAreaName(state, {
+      payload
+    }) {
+      state.businessAreaName = payload.businessAreaName;
+    },
     menuItemSelected(state, {
       payload
     }) {
@@ -66,6 +72,7 @@ export const {
 export const {
   setLoading,
   onRouteChange,
+  setBusinessAreaName,
   menuItemSelected,
   resetLoading,
   setAssignedRole

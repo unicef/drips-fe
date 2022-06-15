@@ -7,5 +7,4 @@ export function getSubheadingFromParams(pathname) {
     return 'Documents';
   }
   return '';
-  //return `${pageName} ${donorName && 'for'} ${donorName}`;
 }
