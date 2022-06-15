@@ -20,7 +20,8 @@ import {
 function* handleFetchUserProfile() {
   yield put(setLoading(true));
   try {
-    const userProfile = yield call(getUserProfile);
+    const users = yield call(getUserProfile);
+    const userProfile = users && users.length ? users[0] : {};
     yield put(onReceiveUserProfile(userProfile));
   } catch (err) {
     yield put(redirectToLogin());
