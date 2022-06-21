@@ -160,9 +160,9 @@ export default function ReportsTable() {
                         </TableCell>
                       </Tooltip>
 
-                      <Tooltip title={row.author ? row.author : ''}>
+                      <Tooltip title={row.uploaded_by ? row.uploaded_by : ''}>
                         <TableCell className={classes.cell} align="left">
-                          {row.author}
+                          {row.uploaded_by}
                         </TableCell>
                       </Tooltip>
 
