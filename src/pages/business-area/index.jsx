@@ -74,7 +74,9 @@ export default function BusinessAreaList() {
     resetPagination();
     const { value } = e.target;
     setQuery(value);
-    setFilteredList(businessAreas.filter(({ name }) => name.toLowerCase().includes(value.toLowerCase())));
+    setFilteredList(businessAreas.filter(({ name, code }) =>
+      name.toLowerCase().includes(value.toLowerCase()) || code.toLowerCase().includes(value.toLowerCase())
+    ));
   }
 
   return (

@@ -10,9 +10,10 @@ import {
   IP_NO_FIELD,
   BAP_DOCUMENT_NO_FIELD,
   FACE_NO_FIELD,
-  PROGRAMM_OFFICER_FIELD,
+  PROGRAM_OFFICER_FIELD,
   FACE_DATE_FIELD,
-  HEAD_OFFICE_FIELD
+  HEAD_OFFICE_FIELD,
+  UPLOADED_BY_FIELD
 } from '../search-constants';
 
 import {keys} from 'ramda';
@@ -31,6 +32,7 @@ import OfficeFilter from '../components/office-filter';
 import ProgramOfficerFilter from '../components/program-officer-filter';
 import RiskRatingFilter from '../components/risk-rating-filter';
 import UploadingAppFilter from '../components/uploading-app-filter';
+import UploadedByFilter from '../components/uploaded-by-filter';
 
 
 export const FILTERS_MAP = {
@@ -74,8 +76,8 @@ export const FILTERS_MAP = {
     label: 'FACE no',
     Component: FaceNoFilter
   },
-  [PROGRAMM_OFFICER_FIELD]: {
-    label: 'Programm Officer',
+  [PROGRAM_OFFICER_FIELD]: {
+    label: 'Program Officer',
     Component: ProgramOfficerFilter
   },
   [FACE_DATE_FIELD]: {
@@ -89,6 +91,10 @@ export const FILTERS_MAP = {
   [UPLOADING_APP_FIELD]: {
     label: 'Uploading App',
     Component: UploadingAppFilter
+  },
+  [UPLOADED_BY_FIELD]: {
+    label: 'Uploaded By',
+    Component: UploadedByFilter
   },
 
 };
