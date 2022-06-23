@@ -8,7 +8,11 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import { Link, Tooltip, TableContainer } from '@material-ui/core';
+import { Link, Tooltip, TableContainer, Box} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import FiberNewIcon from '@material-ui/icons/FiberNew';
 
 import { useTableStyles } from 'styles/table-styles';
@@ -30,6 +34,7 @@ export function getRecipientOfficeStr(report) {
 }
 
 const reportsTableHeadings = [
+  { id: '', label: '', sortable: false },
   { id: BACKEND_REPORTS_FIELDS['ipNo'], label: 'IP No', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['ipName'], label: 'IP Name', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['documentType'], label: 'Document Type', sortable: true },
@@ -66,6 +71,54 @@ export default function ReportsTable() {
     trackPageView()
   }, [pageName]);
 
+    const ExpandableTableRow = ({ children, rowData, ...otherProps }) => {
+     ExpandableTableRow.propTypes = {
+      children: PropTypes.any,
+      rowData: PropTypes.any,
+    }
+    const [isExpanded, setIsExpanded] = React.useState(false);
+
+    return (
+      <>
+        <TableRow {...otherProps}>
+          <TableCell padding="checkbox">
+            <IconButton onClick={() => setIsExpanded(!isExpanded)}>
+              {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </TableCell>
+          {children}
+        </TableRow>
+        {isExpanded && (
+          <TableRow bgcolor='#eeeeee'>
+            <TableCell padding="checkbox" />
+            <TableCell colSpan={13}>
+               <Box className={classes.detailsPanel}>
+                <Tooltip title={rowData.author ? rowData.author : ''}>
+                  <div><p className={classes.detailsHeader}>Author</p>{rowData.author}</div>
+                </Tooltip>
+                <Tooltip title={rowData.ip_type ? rowData.ip_type : ''}>
+                  <div><p className={classes.detailsHeader}>IP Type</p>{rowData.ip_type}</div>
+                </Tooltip>
+                <Tooltip title={rowData.responsible_person ? rowData.responsible_person : ''}>
+                  <div><p className={classes.detailsHeader}>Responsible Person</p>{rowData.responsible_person}</div>
+                </Tooltip>
+                <Tooltip title={rowData.face_form_type ? rowData.face_form_type : ''}>
+                  <div><p className={classes.detailsHeader}>FACE Type</p>{rowData.face_form_type}</div>
+                </Tooltip>
+                <Tooltip title={rowData.cso_type ? rowData.cso_type : ''}>
+                  <div><p className={classes.detailsHeader}>CSO Type</p>{rowData.cso_type}</div>
+                </Tooltip>
+                <Tooltip title={rowData.modified ? getDisplayDate(rowData.modified): ''}>
+                  <div><p className={classes.detailsHeader}>Changed Date</p>{getDisplayDate(rowData.modified)}</div>
+                </Tooltip>
+              </Box>
+            </TableCell>
+          </TableRow>
+          ) }
+      </>
+    );
+  };
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -86,7 +139,7 @@ export default function ReportsTable() {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                    <ExpandableTableRow hover role="checkbox" tabIndex={-1} key={index} rowData={row}>
 
                       <Tooltip title={row.implementing_partner_code ? row.implementing_partner_code : ''}>
                         <TableCell className={classes.cell} align="left">
@@ -172,7 +225,7 @@ export default function ReportsTable() {
                         </TableCell>
                       </Tooltip>
 
-                    </TableRow>
+                    </ExpandableTableRow>
                   );
                 })}
             </TableBody>
