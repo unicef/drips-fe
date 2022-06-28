@@ -43,3 +43,7 @@ export function parseEventValue(valueObj) {
   }
   return valueObj;
 }
+
+export function getDisplayValue(value, defaultValue = '—') {
+  return value ? value : defaultValue;
+}

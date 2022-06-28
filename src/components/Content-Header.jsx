@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { makeStyles, createStyles, Grid, Typography } from '@material-ui/core';
 import { getSubheadingFromParams } from 'lib/params';
 import { useSelector } from 'react-redux';
-import { selectBusinessAreaName } from 'selectors/ui-flags';
+import { selectBusinessAreaCode, selectBusinessAreaName } from 'selectors/ui-flags';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -30,8 +30,9 @@ const useStyles = makeStyles(theme =>
 
 function ContentHeader({ children, location }) {
   const classes = useStyles();
+  const businessCode = useSelector(selectBusinessAreaCode);
   const businessAreaName = useSelector(selectBusinessAreaName);
-  const title = getSubheadingFromParams(location.pathname);
+  const title = getSubheadingFromParams(location.pathname, businessAreaName, businessCode);
 
   return (
     <Grid
@@ -42,7 +43,7 @@ function ContentHeader({ children, location }) {
     >
       <Grid>
         { title && <Typography className={classes.title} variant="h5">
-          {title} for {businessAreaName}
+          {title}
         </Typography> }
       </Grid>
       {children}
