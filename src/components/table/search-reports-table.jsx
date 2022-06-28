@@ -27,6 +27,7 @@ import {
 import TablePaginationActions from './table-pagination-actions';
 import { selectMenuBarPage } from 'selectors/ui-flags';
 import { useMatomo } from '@datapunt/matomo-tracker-react';
+import {getDisplayValue} from 'lib/helpers';
 
 export function getRecipientOfficeStr(report) {
   const recipientOffices = report.recipient_office || [];
@@ -93,23 +94,26 @@ export default function ReportsTable() {
             <TableCell padding="checkbox" />
             <TableCell colSpan={13}>
                <Box className={classes.detailsPanel}>
-                <Tooltip title={rowData.author ? rowData.author : ''}>
-                  <div><p className={classes.detailsHeader}>Author</p>{rowData.author}</div>
-                </Tooltip>
                 <Tooltip title={rowData.ip_type ? rowData.ip_type : ''}>
-                  <div><p className={classes.detailsHeader}>IP Type</p>{rowData.ip_type}</div>
-                </Tooltip>
-                <Tooltip title={rowData.responsible_person ? rowData.responsible_person : ''}>
-                  <div><p className={classes.detailsHeader}>Responsible Person</p>{rowData.responsible_person}</div>
-                </Tooltip>
-                <Tooltip title={rowData.face_form_type ? rowData.face_form_type : ''}>
-                  <div><p className={classes.detailsHeader}>FACE Type</p>{rowData.face_form_type}</div>
+                  <div><p className={classes.detailsHeader}>IP Type</p>{getDisplayValue(rowData.ip_type)}</div>
                 </Tooltip>
                 <Tooltip title={rowData.cso_type ? rowData.cso_type : ''}>
-                  <div><p className={classes.detailsHeader}>CSO Type</p>{rowData.cso_type}</div>
+                  <div><p className={classes.detailsHeader}>CSO Type</p>{getDisplayValue(rowData.cso_type)}</div>
                 </Tooltip>
-                <Tooltip title={rowData.modified ? getDisplayDate(rowData.modified): ''}>
-                  <div><p className={classes.detailsHeader}>Changed Date</p>{getDisplayDate(rowData.modified)}</div>
+                <Tooltip title={rowData.face_form_type ? rowData.face_form_type : ''}>
+                  <div><p className={classes.detailsHeader}>FACE Type</p>{getDisplayValue(rowData.face_form_type)}</div>
+                </Tooltip>
+                <Tooltip title={rowData.responsible_office ? rowData.responsible_office : ''}>
+                  <div><p className={classes.detailsHeader}>Responsible Office</p>{getDisplayValue(rowData.responsible_office)}</div>
+                </Tooltip>
+                <Tooltip title={rowData.responsible_person ? rowData.responsible_person : ''}>
+                  <div><p className={classes.detailsHeader}>Responsible Person</p>{getDisplayValue(rowData.responsible_person)}</div>
+                </Tooltip>
+                <Tooltip title={rowData.f_a_c_e_form_date ? getDisplayDate(rowData.f_a_c_e_form_date) : ''}>
+                  <div><p className={classes.detailsHeader}>Face Form Date</p>{getDisplayValue(getDisplayDate(rowData.f_a_c_e_form_date))}</div>
+                </Tooltip>
+                <Tooltip title={rowData.ho_o_approval ? rowData.ho_o_approval : ''}>
+                  <div><p className={classes.detailsHeader}>Head of Office</p>{getDisplayValue(rowData.ho_o_approval)}</div>
                 </Tooltip>
               </Box>
             </TableCell>
@@ -168,7 +172,7 @@ export default function ReportsTable() {
                         <Tooltip title={row.title ? row.title : ''}>
                           <Typography className={classes.overflow}>
                             <Link color="secondary" href={row.download_url} target="_blank">
-                              {row.is_new && <FiberNewIcon fontSize="small" color="error" />}
+                              {row.is_new && <FiberNewIcon fontSize="small" className={classes.icon} color="error" />}
                               {row.title}
                             </Link>
                           </Typography>

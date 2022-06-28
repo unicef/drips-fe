@@ -2,9 +2,16 @@ import {
   DOCUMENTS
 } from './constants';
 
-export function getSubheadingFromParams(pathname) {
+export function getSubheadingFromParams(pathname, businessArea = '', businessCode = '') {
+  let pageName = null;
   if (pathname.includes(DOCUMENTS)) {
-    return 'Documents';
+    pageName = 'Documents';
   }
-  return '';
+  if (!pageName) {
+    return '';
+  }
+  if (businessCode !== '') {
+    businessCode = ` [${businessCode}]`;
+  }
+  return `${pageName} for ${businessArea} ${businessCode}`;
 }
