@@ -80,7 +80,7 @@ export default function AppToolbar() {
   const pageName = useSelector(selectPageName);
   const { handleNav } = useNav();
   function logout() {
-    window.location.href = `/drips/social/unicef-logout/`;
+    window.location.href = `/drips/security/unicef-logout/`;
   }
 
   function getHomeButton() {
