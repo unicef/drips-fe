@@ -47,13 +47,13 @@ jobs:
           name: Building the image
           command: |
             TAG=${CIRCLE_BRANCH}
-            docker build -t unicef/drips-frontend:$TAG .
+            docker build -t unicef/drips-fe:$TAG .
       - run:
           name: Pushing to Docker Hub
           command: |
             TAG=${CIRCLE_BRANCH}
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker push unicef/drips-frontend:$TAG
+            docker push unicef/drips-fe:$TAG
 
 workflows:
   version: 2
