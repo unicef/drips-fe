@@ -87,7 +87,7 @@ export default function LandingPage() {
           >
             <img src={circleLogo} className={classes.logoSplash} alt="UN Logo" />
             <Typography variant="h4" className={classes.hWelcome}>
-              <strong>Welcome to the Document Repository of Implementing Partners Portal</strong>
+              <strong>Welcome to the Document Repository of Implementing Partners Portal (DRIPS)</strong>
             </Typography>
             <Grid container justify="center">
               <Box display="flex" alignItems="center">
