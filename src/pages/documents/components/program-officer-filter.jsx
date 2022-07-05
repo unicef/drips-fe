@@ -9,14 +9,14 @@ export default function ProgramOfficerFilter({ value = '', onChange, ...props })
   return (
     <FormControl className={classes.formControl} {...props}>
       <TextField
-        placeholder="Program Officer"
+        placeholder="Responsible Person"
         className={classes.input}
         inputProps={{
           'aria-label': 'description'
         }}
         onChange={onChange}
         value={value}
-        label="Program Officer"
+        label="Responsible Person"
       />
     </FormControl>
   );
