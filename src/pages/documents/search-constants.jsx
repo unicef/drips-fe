@@ -56,7 +56,7 @@ export const BAP_DOCUMENT_NO_FIELD = 'b_a_p_document_no__contains';
 export const FACE_NO_FIELD = 'face_form_no__contains';
 export const PROGRAM_OFFICER_FIELD = 'responsible_person__contains';
 export const FACE_DATE_FIELD = 'f_a_c_e_form_date';
-export const HEAD_OFFICE_FIELD = 'head_office'; // @dci ???
+export const HEAD_OFFICE_FIELD = 'ho_o_approval';
 export const UPLOADED_BY_FIELD = 'uploaded_by__contains';
 
 
