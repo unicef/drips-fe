@@ -77,7 +77,7 @@ export const FILTERS_MAP = {
     Component: FaceNoFilter
   },
   [PROGRAM_OFFICER_FIELD]: {
-    label: 'Program Officer',
+    label: 'UNICEF Responsible Person',
     Component: ProgramOfficerFilter
   },
   [FACE_DATE_FIELD]: {
