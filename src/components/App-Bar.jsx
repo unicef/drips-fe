@@ -107,7 +107,7 @@ export default function AppToolbar() {
             </IconButton>
           </Box>
           <Box width="100%" display="flex" justifyContent="space-between">
-            <Typography className={clsx(classes.appTitle, classes.banner)}>Document Repository of Implementing Partners Portal</Typography>
+            <Typography className={clsx(classes.appTitle, classes.banner)}>Document Repository of Implementing Partners Portal (DRIPS)</Typography>
             <Typography className={classes.banner}>{userName}</Typography>
           </Box>
         </Box>
