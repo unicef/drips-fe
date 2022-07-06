@@ -46,9 +46,6 @@ const reportsTableHeadings = [
   { id: BACKEND_REPORTS_FIELDS['hactTransaction'], label: 'HACT Transaction', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['frNo'], label: 'FR No', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['fcNo'], label: 'FC No', sortable: true },
-  { id: BACKEND_REPORTS_FIELDS['uploadedDate'], label: 'Upload Date', sortable: true },
-  { id: BACKEND_REPORTS_FIELDS['uploadedBy'], label: 'Uploaded By', sortable: true },
-  { id: BACKEND_REPORTS_FIELDS['uploadedApp'], label: 'Uploaded App', sortable: true }
 ];
 
 export default function ReportsTable() {
@@ -92,7 +89,7 @@ export default function ReportsTable() {
         {isExpanded && (
           <TableRow bgcolor='#eeeeee'>
             <TableCell padding="checkbox" />
-            <TableCell colSpan={13}>
+            <TableCell colSpan={10}>
                <Box className={classes.detailsPanel}>
                 <Tooltip title={rowData.ip_type ? rowData.ip_type : ''}>
                   <div><p className={classes.detailsHeader}>IP Type</p>{getDisplayValue(rowData.ip_type)}</div>
@@ -114,6 +111,18 @@ export default function ReportsTable() {
                 </Tooltip>
                 <Tooltip title={rowData.ho_o_approval ? rowData.ho_o_approval : ''}>
                   <div><p className={classes.detailsHeader}>Head of Office</p>{getDisplayValue(rowData.ho_o_approval)}</div>
+                </Tooltip>
+                <Tooltip title={rowData.partner_risk_rating ? rowData.partner_risk_rating : ''}>
+                  <div><p className={classes.detailsHeader}>Partner Risk Rating</p>{getDisplayValue(rowData.partner_risk_rating)}</div>
+                </Tooltip>
+                <Tooltip title={rowData.created ? getDisplayDate(rowData.created) : ''}>
+                  <div><p className={classes.detailsHeader}>Upload Date</p>{getDisplayValue(getDisplayDate(rowData.created))}</div>
+                </Tooltip>
+                <Tooltip title={rowData.uploaded_by ? rowData.uploaded_by : ''}>
+                  <div><p className={classes.detailsHeader}>Uploaded By</p>{getDisplayValue(rowData.uploaded_by)}</div>
+                </Tooltip>
+                <Tooltip title={rowData.documentuploaded_app ? rowData.documentuploaded_app : ''}>
+                  <div><p className={classes.detailsHeader}>Uploaded App</p>{getDisplayValue(rowData.documentuploaded_app)}</div>
                 </Tooltip>
               </Box>
             </TableCell>
@@ -208,24 +217,6 @@ export default function ReportsTable() {
                       <Tooltip title={row.funds_commitment_no ? row.funds_commitment_no : ''}>
                         <TableCell className={classes.cell} align="left">
                           {row.funds_commitment_no}
-                        </TableCell>
-                      </Tooltip>
-
-                      <Tooltip title={row.created ? getDisplayDate(row.created): ''}>
-                        <TableCell className={classes.cell} align="left">
-                          {getDisplayDate(row.created)}
-                        </TableCell>
-                      </Tooltip>
-
-                      <Tooltip title={row.uploaded_by ? row.uploaded_by : ''}>
-                        <TableCell className={classes.cell} align="left">
-                          {row.uploaded_by}
-                        </TableCell>
-                      </Tooltip>
-
-                      <Tooltip title={row.documentuploaded_app ? row.documentuploaded_app : ''}>
-                        <TableCell className={classes.cell} align="left">
-                          {row.documentuploaded_app}
                         </TableCell>
                       </Tooltip>
 
