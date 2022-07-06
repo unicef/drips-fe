@@ -13,7 +13,8 @@ import {
   PROGRAM_OFFICER_FIELD,
   FACE_DATE_FIELD,
   HEAD_OFFICE_FIELD,
-  UPLOADED_BY_FIELD
+  UPLOADED_BY_FIELD,
+  FACE_DESCRIPTION_FIELD
 } from '../search-constants';
 
 import {keys} from 'ramda';
@@ -33,6 +34,7 @@ import ProgramOfficerFilter from '../components/program-officer-filter';
 import RiskRatingFilter from '../components/risk-rating-filter';
 import UploadingAppFilter from '../components/uploading-app-filter';
 import UploadedByFilter from '../components/uploaded-by-filter';
+import FaceDescriptionFilter from '../components/face-description-filter';
 
 
 export const FILTERS_MAP = {
@@ -73,8 +75,12 @@ export const FILTERS_MAP = {
     Component: FaceTypeFilter
   },
   [FACE_NO_FIELD]: {
-    label: 'FACE no',
+    label: 'FACE No',
     Component: FaceNoFilter
+  },
+  [FACE_DESCRIPTION_FIELD]: {
+    label: 'FACE Description',
+    Component: FaceDescriptionFilter
   },
   [PROGRAM_OFFICER_FIELD]: {
     label: 'UNICEF Responsible Person',

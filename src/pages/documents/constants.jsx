@@ -6,6 +6,8 @@ export const BACKEND_REPORTS_FIELDS = {
   bap: 'bap',
   bapDescription: 'bap_description',
   faceNo: 'face_no',
+  faceType: 'face_form_type',
+  faceDesc: 'f_a_c_e_form_description',
   hactTransaction: 'hact_transaction',
   frNo: 'fr_no',
   fcNo: 'fc_no',
