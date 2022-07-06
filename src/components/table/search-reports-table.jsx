@@ -43,6 +43,8 @@ const reportsTableHeadings = [
   { id: BACKEND_REPORTS_FIELDS['bap'], label: 'BAP', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['bapDescription'], label: 'BAP Description', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['faceNo'], label: 'FACE No', sortable: true },
+  { id: BACKEND_REPORTS_FIELDS['faceType'], label: 'FACE Type', sortable: true },
+  { id: BACKEND_REPORTS_FIELDS['faceDesc'], label: 'FACE Description', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['hactTransaction'], label: 'HACT Transaction', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['frNo'], label: 'FR No', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['fcNo'], label: 'FC No', sortable: true },
@@ -89,7 +91,7 @@ export default function ReportsTable() {
         {isExpanded && (
           <TableRow bgcolor='#eeeeee'>
             <TableCell padding="checkbox" />
-            <TableCell colSpan={10}>
+            <TableCell colSpan={12}>
                <Box className={classes.detailsPanel}>
                 <Tooltip title={rowData.ip_type ? rowData.ip_type : ''}>
                   <div><p className={classes.detailsHeader}>IP Type</p>{getDisplayValue(rowData.ip_type)}</div>
@@ -97,23 +99,20 @@ export default function ReportsTable() {
                 <Tooltip title={rowData.cso_type ? rowData.cso_type : ''}>
                   <div><p className={classes.detailsHeader}>CSO Type</p>{getDisplayValue(rowData.cso_type)}</div>
                 </Tooltip>
-                <Tooltip title={rowData.face_form_type ? rowData.face_form_type : ''}>
-                  <div><p className={classes.detailsHeader}>FACE Type</p>{getDisplayValue(rowData.face_form_type)}</div>
-                </Tooltip>
                 <Tooltip title={rowData.responsible_office ? rowData.responsible_office : ''}>
                   <div><p className={classes.detailsHeader}>Responsible Office</p>{getDisplayValue(rowData.responsible_office)}</div>
                 </Tooltip>
                 <Tooltip title={rowData.responsible_person ? rowData.responsible_person : ''}>
                   <div><p className={classes.detailsHeader}>Responsible Person</p>{getDisplayValue(rowData.responsible_person)}</div>
                 </Tooltip>
-                <Tooltip title={rowData.f_a_c_e_form_date ? getDisplayDate(rowData.f_a_c_e_form_date) : ''}>
-                  <div><p className={classes.detailsHeader}>Face Form Date</p>{getDisplayValue(getDisplayDate(rowData.f_a_c_e_form_date))}</div>
-                </Tooltip>
                 <Tooltip title={rowData.ho_o_approval ? rowData.ho_o_approval : ''}>
                   <div><p className={classes.detailsHeader}>Head of Office</p>{getDisplayValue(rowData.ho_o_approval)}</div>
                 </Tooltip>
                 <Tooltip title={rowData.partner_risk_rating ? rowData.partner_risk_rating : ''}>
                   <div><p className={classes.detailsHeader}>Partner Risk Rating</p>{getDisplayValue(rowData.partner_risk_rating)}</div>
+                </Tooltip>
+                <Tooltip title={rowData.f_a_c_e_form_date ? getDisplayDate(rowData.f_a_c_e_form_date) : ''}>
+                  <div><p className={classes.detailsHeader}>Face Form Date</p>{getDisplayValue(getDisplayDate(rowData.f_a_c_e_form_date))}</div>
                 </Tooltip>
                 <Tooltip title={rowData.created ? getDisplayDate(rowData.created) : ''}>
                   <div><p className={classes.detailsHeader}>Upload Date</p>{getDisplayValue(getDisplayDate(rowData.created))}</div>
@@ -199,6 +198,18 @@ export default function ReportsTable() {
                       <Tooltip title={row.face_form_no ? row.face_form_no : ''}>
                         <TableCell className={classes.cell} align="left">
                           {row.face_form_no}
+                        </TableCell>
+                      </Tooltip>
+
+                      <Tooltip title={row.face_form_type ? row.face_form_type : ''}>
+                        <TableCell className={classes.cell} align="left">
+                          {row.face_form_type}
+                        </TableCell>
+                      </Tooltip>
+
+                      <Tooltip title={row.f_a_c_e_form_description ? row.f_a_c_e_form_description : ''}>
+                        <TableCell className={classes.cell} align="left">
+                          {row.f_a_c_e_form_description}
                         </TableCell>
                       </Tooltip>
 
