@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { createStyles } from '@material-ui/styles';
 import { useHistory } from 'react-router';
-import { makeStyles, AppBar, Toolbar, Box, Typography, IconButton } from '@material-ui/core';
+import { makeStyles, AppBar, Toolbar, Box, Typography, IconButton, Link } from '@material-ui/core';
 import horizontalLogo from '../assets/images/UNICEF_White_Horizontal.png';
 import ezhactSmallLogo from '../assets/images/ezhact_logo_small.png';
 import ErrorsSnackbar from './Errors-Snackbar';
@@ -60,6 +60,20 @@ const useStyles = makeStyles(theme =>
       margin: '0 10px',
       display: 'flex',
       justifyContent: 'space-between'
+    },
+    link: {
+      textDecoration: 'none',
+      color: '#FFF',
+      height: '20px',
+      fontSize: '15px',
+      margin: '30px',
+      '&:hover': {
+          textDecoration: 'none'
+        }
+    },
+    rightPanel: {
+      display: 'flex',
+      paddingTop: '20px'
     }
   })
 );
@@ -102,9 +116,14 @@ export default function AppToolbar() {
         <Box width="100%">
           <Box width="100%" display="flex" justifyContent="space-between">
             <img src={horizontalLogo} className={classes.headerLogo} />
-            <IconButton aria-label="logout" className={classes.button} onClick={logout}>
-              <ExitToAppIcon />
-            </IconButton>
+            <Box className={classes.rightPanel}>
+              <Link className={classes.link} href='https://unicef.sharepoint.com/sites/DFAM-eZHACTTraining' target="_blank">
+                  eZHACT SharePoint Site
+              </Link>
+              <IconButton aria-label="logout" className={classes.button} onClick={logout}>
+                <ExitToAppIcon />
+              </IconButton>
+            </Box>
           </Box>
           <Box width="100%" display="flex" justifyContent="space-between">
             <Typography className={clsx(classes.appTitle, classes.banner)}>Document Repository of Implementing Partners Portal (DRIPS)</Typography>
