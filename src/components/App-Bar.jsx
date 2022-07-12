@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme =>
       color: '#FFF',
       height: '20px',
       fontSize: '15px',
-      margin: '30px',
+      padding: '15px 30px',
       '&:hover': {
           textDecoration: 'none'
         }

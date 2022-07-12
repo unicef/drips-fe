@@ -48,9 +48,15 @@ export const useTableStyles = makeStyles(theme => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis'
   },
+  w150: {
+    width: '150px',
+    minWidth: '150px',
+    maxWidth: '150px',
+  },
   overflow: {
     overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
   },
   titleCell: {
     width: '20%'

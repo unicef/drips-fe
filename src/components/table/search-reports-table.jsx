@@ -172,7 +172,7 @@ export default function ReportsTable() {
                       </Tooltip>
 
                       <TableCell
-                        className={clsx(classes.cell, classes.titleCell)}
+                        className={clsx(classes.cell, classes.w150)}
                         component="th"
                         id={labelId}
                         scope="row"
