@@ -4,6 +4,7 @@ import {
 } from './helpers';
 import Qs from 'qs';
 import {
+  REACT_APP_COSTCENTERS_ENDPOINT,
   REACT_APP_SEARCH_API
 } from './endpoints';
 
@@ -36,5 +37,10 @@ export async function get(uri, params = {}, options = getBaseOptions()) {
 
 export async function fetchSearchReports(params) {
   const computedUrl = REACT_APP_SEARCH_API;
+  return get(computedUrl, params);
+}
+
+export async function fetchCostCenters(params) {
+  const computedUrl = REACT_APP_COSTCENTERS_ENDPOINT;
   return get(computedUrl, params);
 }

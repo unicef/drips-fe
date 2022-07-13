@@ -14,9 +14,9 @@ export const selectIPType = createSelector(
   selectMetadata,
   assets => assets.ip_type
 );
-export const selectOffice = createSelector(
+export const selectCostCenter = createSelector(
   selectMetadata,
-  assets => assets.office
+  assets => assets.cost_center
 );
 export const selectHeadOffice = createSelector(
   selectMetadata,
