@@ -6,7 +6,9 @@ import { useSelector } from 'react-redux';
 import { FormControl, TextField } from '@material-ui/core';
 import { useGetFilterClasses } from 'styles/filter-styles';
 import { makeStyles } from '@material-ui/styles';
-import { Autocomplete } from '@material-ui/lab';
+import { Autocomplete, createFilterOptions } from '@material-ui/lab';
+
+import clsx from 'clsx';
 
 const useStyles = makeStyles({
   root: {
@@ -16,12 +18,12 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SearchableDropdownFilterFactory(selector, label, getValueFromObj) {
+export default function SearchableDropdownFilterFactory(selector, label, getValueFromObj, textField) {
   const Component = ({ value = '', onChange, ...props }) => {
     const { classes } = useGetFilterClasses();
     const options = useSelector(selector) || [];
     const [dropdownValue, setDropdownValue] = useState(null);
-    const classes2 = useStyles();
+    const localClasses = useStyles();
 
     useEffect(() => {
       const val = options.find(
@@ -33,16 +35,22 @@ export default function SearchableDropdownFilterFactory(selector, label, getValu
       setDropdownValue(val);
     }, [value, options]);
 
+    const filterOptions = createFilterOptions({
+      stringify: option => option[textField],
+    });
+
     return (
       <FormControl className={classes.formControl}>
         <Autocomplete
           options={options}
+          filterOptions={filterOptions}
           value={dropdownValue}
+          className={clsx(localClasses.root, classes.textField)}
+          getOptionLabel={(option) => option[textField]}
           onChange={(event, newValue) => {
             onChange(getValueFromObj(newValue));
           }}
-          classes={classes2}
-          renderInput={params => <TextField className={classes.input} {...params} label={label} margin="normal" fullWidth />}
+          renderInput={params => <TextField className={classes.input} {...params} label={label} margin="normal" fullWidth  />}
           {...props}
         />
       </FormControl>

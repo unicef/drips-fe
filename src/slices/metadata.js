@@ -11,7 +11,7 @@ export const metadataInitialState = {
   face_type: [],
   risk_rating: [],
   bap_document_type: [],
-  office: [],
+  cost_center: [],
   head_office: []
 };
 
@@ -27,7 +27,7 @@ const metadataSlice = createSlice({
         face_type: [],
         risk_rating: [],
         bap_document_type: [],
-        office: [],
+        cost_center: [],
         head_office: [{code: 'Yes', description: 'Yes'}, {code: 'No', description: 'No'}]
       }
       action.payload.forEach(element => {
@@ -39,6 +39,11 @@ const metadataSlice = createSlice({
       });
 
       return metadata;
+    },
+    onReceiveCostCenter(state, {
+      payload
+    }) {
+      state.cost_center = payload;
     }
   }
 });
@@ -47,5 +52,6 @@ export const {
   reducer: metadata
 } = metadataSlice;
 export const {
-  onReceiveMetadata
+  onReceiveMetadata,
+  onReceiveCostCenter
 } = metadataSlice.actions;

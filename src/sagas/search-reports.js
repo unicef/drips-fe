@@ -11,10 +11,13 @@ import {
   selectBusinessAreaCode
 } from 'selectors/ui-flags';
 import {
+  selectCostCenter
+} from 'selectors/collections';
+import {
   removeEmpties
 } from 'lib/helpers';
 import {
-  fetchSearchReports,
+  fetchSearchReports, fetchCostCenters
 } from 'api/search-index';
 import {
   setLoading
@@ -22,6 +25,9 @@ import {
 import {
   onReceiveSearchReports
 } from 'slices/search-reports';
+import {
+  onReceiveCostCenter
+} from 'slices/metadata';
 import {
   setError
 } from 'slices/error';
@@ -35,24 +41,20 @@ import {
   SEARCH_DOCUMENTS, SOURCE_ID
 } from '../lib/constants'
 
-function* getInitialSearchReports(params) {
-  let result = {};
+function* getCostCenters(params) {
   try {
-    result = yield call(
-      fetchSearchReports, params
-    )
+    let costCenters = yield call(fetchCostCenters, {business_area_code: params.business_area});
+    yield put(onReceiveCostCenter(costCenters));
   } catch (err) {
-    yield put(setError(err));
+    put(setError(err));
   }
-  return result;
 }
 
 function* getSearchReports(params) {
-  const currentlyBACode = yield select(selectBusinessAreaCode);
+  const costCenters = yield select(selectCostCenter);
 
-  if (!currentlyBACode || currentlyBACode != params.businessArea) {
-    searchReports = yield call(getInitialSearchReports, params);
-    return searchReports;
+  if (!costCenters || !costCenters.length) {
+    yield call(getCostCenters, params);
   }
 
   let searchReports = {};
