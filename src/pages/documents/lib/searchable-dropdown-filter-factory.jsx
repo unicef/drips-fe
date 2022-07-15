@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { compose, equals } from 'ramda';
 
 import { useSelector } from 'react-redux';
 import { FormControl, TextField } from '@material-ui/core';
@@ -18,7 +17,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SearchableDropdownFilterFactory(selector, label, getValueFromObj, textField) {
+export default function SearchableDropdownFilterFactory(selector, label, textField, valueField) {
   const Component = ({ value = '', onChange, ...props }) => {
     const { classes } = useGetFilterClasses();
     const options = useSelector(selector) || [];
@@ -26,12 +25,7 @@ export default function SearchableDropdownFilterFactory(selector, label, getValu
     const localClasses = useStyles();
 
     useEffect(() => {
-      const val = options.find(
-        compose(
-          equals(value),
-          getValueFromObj
-        )
-      );
+      const val = options.find(x => x[valueField] === value);
       setDropdownValue(val);
     }, [value, options]);
 
@@ -46,9 +40,9 @@ export default function SearchableDropdownFilterFactory(selector, label, getValu
           filterOptions={filterOptions}
           value={dropdownValue}
           className={clsx(localClasses.root, classes.textField)}
-          getOptionLabel={(option) => option[textField]}
+          getOptionLabel={(option) => option ? option[textField] : ''}
           onChange={(event, newValue) => {
-            onChange(getValueFromObj(newValue));
+            onChange(newValue ? newValue[valueField] : '');
           }}
           renderInput={params => <TextField className={classes.input} {...params} label={label} margin="normal" fullWidth  />}
           {...props}
