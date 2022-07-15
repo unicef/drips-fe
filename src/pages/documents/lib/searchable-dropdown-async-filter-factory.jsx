@@ -18,15 +18,18 @@ const useStyles = makeStyles({
 export default function SearchableDropdownAsyncFilterFactory(getDataAsynchronously, label, textField, valueField) {
   const Component = ({  value = '', onChange, ...props }) => {
     const { classes } = useGetFilterClasses();
-    const [dropdownValue, setDropdownValue] = useState(null);
+    const [defaultValue, setDefaultValue] = useState(null);
     const [options, setOptions] = useState([]);
     const [inputValue, setInputValue] = useState(null);
     const localClasses = useStyles();
 
     useEffect(() => {
-      const val = options.find(x => (x[valueField] || x) === value);
-      setDropdownValue(val);
-    }, [value, options]);
+      setTimeout(() => {
+        if(value) {
+          setDefaultValue({[textField]: value, [valueField]: value});
+        }
+      }, 1000);
+    }, []);
 
      useEffect(() => {
         if (!inputValue) {
@@ -53,7 +56,7 @@ export default function SearchableDropdownAsyncFilterFactory(getDataAsynchronous
       <FormControl className={classes.formControl}>
         <Autocomplete
           options={options}
-          value={dropdownValue}
+          defaultValue={defaultValue}
           className={clsx(localClasses.root, classes.textField)}
           getOptionLabel={(option) => option ? option[textField] : ''}
           onChange={(event, newValue) => {
