@@ -3,13 +3,13 @@ import { FormControl, TextField } from '@material-ui/core';
 import { useGetFilterClasses } from 'styles/filter-styles';
 import { FilterProps } from '../lib/dropdown-filter-factory';
 
-export default function FaceNoFilter({ value = '', onChange, ...props }) {
+export default function SearchFilter({ value = '', onChange, ...props }) {
   const classes = useGetFilterClasses();
 
   return (
     <FormControl style={{width: '100%'}} className={classes.formControl} {...props}>
       <TextField
-        placeholder="FACE No"
+        placeholder="Search"
         className={classes.input}
         inputProps={{
           'aria-label': 'description'
@@ -17,10 +17,10 @@ export default function FaceNoFilter({ value = '', onChange, ...props }) {
         fullWidth
         onChange={onChange}
         value={value}
-        label="FACE No"
+        label="Search"
       />
     </FormControl>
   );
 }
 
-FaceNoFilter.propTypes = FilterProps;
+SearchFilter.propTypes = FilterProps;

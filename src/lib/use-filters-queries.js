@@ -36,6 +36,10 @@ const useFiltersQueries = FILTERS_MAP => {
   useEffect(() => {
     const filtersFromUrl = pickBy(isValidQuery, filterValues);
     const activatedFilters = mapObjIndexed(always(true), filtersFromUrl);
+    if (!Object.keys(activatedFilters).length) {
+      // if no filters in url, show by default search filter
+      activatedFilters.search = true;
+    }
     const nedActiveState = {
       ...filtersActiveState,
       ...activatedFilters

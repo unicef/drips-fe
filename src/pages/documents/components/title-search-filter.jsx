@@ -7,13 +7,14 @@ export default function TitleSearchFilter({ value = '', onChange, ...props }) {
   const classes = useGetFilterClasses();
 
   return (
-    <FormControl className={classes.formControl} {...props}>
+    <FormControl style={{width: '100%'}} className={classes.formControl} {...props}>
       <TextField
         placeholder="Search Filename"
         className={classes.input}
         inputProps={{
           'aria-label': 'description'
         }}
+        fullWidth
         label="Filename"
         onChange={onChange}
         value={value}

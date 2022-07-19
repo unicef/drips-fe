@@ -14,7 +14,8 @@ import {
   FACE_DATE_FIELD,
   HEAD_OFFICE_FIELD,
   UPLOADED_BY_FIELD,
-  FACE_DESCRIPTION_FIELD
+  FACE_DESCRIPTION_FIELD,
+  SEARCH_FIELD
 } from '../search-constants';
 
 import {keys} from 'ramda';
@@ -35,9 +36,14 @@ import RiskRatingFilter from '../components/risk-rating-filter';
 import UploadingAppFilter from '../components/uploading-app-filter';
 import UploadedByFilter from '../components/uploaded-by-filter';
 import FaceDescriptionFilter from '../components/face-description-filter';
+import SearchFilter from '../components/search-filter';
 
 
 export const FILTERS_MAP = {
+  [SEARCH_FIELD]: {
+    label: 'Search',
+    Component: SearchFilter
+  },
   [IP_TYPE_FIELD]: {
     label: 'IP Type',
     Component: IPTypeFilter
