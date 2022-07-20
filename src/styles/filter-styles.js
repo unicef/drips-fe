@@ -107,7 +107,12 @@ const useFilterStyles = makeStyles(theme =>
       '&.hidden': {
         visibility: 'hidden'
       }
-    }
+    },
+    input: {
+      width: '100%',
+      paddingRight: '8px',
+      paddingLeft: '8px'
+    },
   })
 );
 export default useFilterStyles;

@@ -59,6 +59,7 @@ export const PROGRAM_OFFICER_FIELD = 'responsible_person__contains';
 export const FACE_DATE_FIELD = 'f_a_c_e_form_date';
 export const HEAD_OFFICE_FIELD = 'ho_o_approval';
 export const UPLOADED_BY_FIELD = 'uploaded_by__contains';
+export const SEARCH_FIELD = 'search';
 
 
 // PROPERTIES TO BE USED FOR QUERY
