@@ -10,14 +10,14 @@ import {
   selectMenuBarPage,
   selectBusinessAreaCode
 } from 'selectors/ui-flags';
-import {
-  selectCostCenter
-} from 'selectors/collections';
+// import {
+//   selectCostCenter
+// } from 'selectors/collections';
 import {
   removeEmpties
 } from 'lib/helpers';
 import {
-  fetchSearchReports, fetchCostCenters
+  fetchSearchReports, //fetchCostCenters
 } from 'api/search-index';
 import {
   setLoading
@@ -25,9 +25,9 @@ import {
 import {
   onReceiveSearchReports
 } from 'slices/search-reports';
-import {
-  onReceiveCostCenter
-} from 'slices/metadata';
+// import {
+//   onReceiveCostCenter
+// } from 'slices/metadata';
 import {
   setError
 } from 'slices/error';
@@ -41,21 +41,23 @@ import {
   SEARCH_DOCUMENTS, SOURCE_ID
 } from '../lib/constants'
 
-function* getCostCenters(params) {
-  try {
-    let costCenters = yield call(fetchCostCenters, {business_area_code: params.business_area});
-    yield put(onReceiveCostCenter(costCenters));
-  } catch (err) {
-    put(setError(err));
-  }
-}
+// autocomplete office needed
+// function* getCostCenters(params) {
+//   try {
+//     let costCenters = yield call(fetchCostCenters, {business_area_code: params.business_area});
+//     yield put(onReceiveCostCenter(costCenters));
+//   } catch (err) {
+//     put(setError(err));
+//   }
+// }
 
 function* getSearchReports(params) {
-  const costCenters = yield select(selectCostCenter);
+  // autocomplete office needed
+  // const costCenters = yield select(selectCostCenter);
 
-  if (!costCenters || !costCenters.length) {
-    yield call(getCostCenters, params);
-  }
+  // if (!costCenters || !costCenters.length) {
+  //   yield call(getCostCenters, params);
+  // }
 
   let searchReports = {};
   searchReports = yield call(fetchSearchReports, params);
