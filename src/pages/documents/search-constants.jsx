@@ -45,7 +45,7 @@ export const MODIFIED_AFTER_FIELD = 'modified__gte';
 
 export const IP_TYPE_FIELD = 'ip_type';
 export const CSO_TYPE_FIELD = 'cso_type';
-export const OFFICE_FIELD = 'responsible_office__contains';
+export const OFFICE_FIELD = 'responsible_office';
 export const RISK_RATING_FIELD = 'partner_risk_rating'; // @dci ??? seems it's not working on fitlering
 export const BAP_DOCUMENT_TYPE_FIELD = 'b_a_p_document_type';
 export const DOCUMENT_TYPE_FIELD = 'attachment_type';

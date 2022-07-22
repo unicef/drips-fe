@@ -40,7 +40,7 @@ const reportsTableHeadings = [
   { id: BACKEND_REPORTS_FIELDS['ipName'], label: 'IP Name', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['documentType'], label: 'Document Type', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['documentLink'], label: 'Document Link', sortable: true },
-  { id: BACKEND_REPORTS_FIELDS['bap'], label: 'BAP', sortable: true },
+  { id: BACKEND_REPORTS_FIELDS['bap'], label: 'BAP No', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['bapDescription'], label: 'BAP Description', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['faceNo'], label: 'FACE No', sortable: true },
   { id: BACKEND_REPORTS_FIELDS['faceType'], label: 'FACE Type', sortable: true },

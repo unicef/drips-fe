@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { equals } from 'ramda';
 import { useLocation } from 'react-router';
 import { onRouteChange, setBusinessAreaName } from 'slices/ui';
-// import { onReceiveCostCenter } from 'slices/metadata';
+import { onReceiveCostCenter } from 'slices/metadata';
 import { useEffect } from 'react';
 import { selectPageName, selectBusinessAreaCode } from 'selectors/ui-flags';
 import {selectBusinessAreas} from 'selectors/collections';
@@ -47,8 +47,7 @@ export default function ConnectedRouterWatcher({ children }) {
     const route = location.pathname.split('/').filter(Boolean);
     const [page, businessArea] = route;
     if (route.length && (!equals(currentPageName, page) || !equals(currentBusinessArea, businessArea))) {
-      // autocomplete office needed
-      //dispatch(onReceiveCostCenter([]));
+      dispatch(onReceiveCostCenter([]));
       dispatch(onRouteChange({ page, businessArea: businessArea || null }));
     }
   });
