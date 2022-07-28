@@ -187,8 +187,8 @@ export default function ReportsTable() {
                         </Tooltip>
                       </TableCell>
 
-                      <Tooltip title={row.b_a_p_document_no ? row.b_a_p_document_no : ''}>
-                          <TableCell className={classes.cell} align="left">{row.b_a_p_document_no}</TableCell>
+                      <Tooltip title={row.program_document_no ? row.program_document_no : ''}>
+                          <TableCell className={classes.cell} align="left">{row.program_document_no}</TableCell>
                       </Tooltip>
 
                       <Tooltip title={row.b_a_p_document_type ? row.b_a_p_document_type : ''}>
